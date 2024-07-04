@@ -1,0 +1,213 @@
+﻿@model IEnumerable<Garage_ManagementFinal.recipt>
+
+@{
+    ViewBag.Title = "SearchForname";
+    double sub_total = 0;
+    double sub_vat = 0;
+    double total = 0;
+    string Fullname = "";
+    string reciept_no = "";
+    DateTime datee = DateTime.Now;
+    string plate_no = "";
+
+}
+@{Layout = null;}
+@{
+
+    if (TempData["SuccessMessage"] != null)
+    {
+        <p class="alert alert-danger">
+            @TempData["SuccessMessage"]
+        </p>
+    }
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Garage Invoice</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <style>
+        body {
+            margin-top: 10px;
+            background: #eee;
+        }
+    </style>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="container bootdey">
+        <div class="row invoice row-printable">
+            <div class="col-md-10">
+                <!-- col-lg-12 start here -->
+                <div class="panel panel-default plain" id="dash_0">
+                    <!-- Start .panel -->
+                    <div class="panel-body p30">
+                        <div class="row">
+                            <!-- Start .row -->
+                            <div class="col-lg-6">
+                                <!-- col-lg-6 start here -->
+                                <div class="invoice-logo"><img width="100" src="~/Content/lo.png" alt="Invoice logo"></div>
+                            </div>
+                            <!-- col-lg-6 end here -->
+                            <div class="col-lg-6">
+                                <!-- col-lg-6 start here -->
+                                <div class="invoice-from">
+                                    <ul class="list-unstyled text-right">
+                                        <li>Brihanu Garage</li>
+                                        <li>Adama,Ethiopia, 2015</li>
+                                        <li> Kebele 09</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- col-lg-6 end here -->
+                            <div class="col-lg-12">
+                                <!-- col-lg-12 start here -->
+                                <div class="invoice-details mt25">
+                                    <div class="well">
+                                        <ul class="list-unstyled mb0">
+                                            
+                                            <li><strong>Attachment Date:</strong>@datee</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="invoice-to mt25">
+                                    <ul class="list-unstyled">
+                                        <li><strong>@reciept_no</strong></li>
+                                        <li>
+                                            @if (User.Identity.IsAuthenticated)
+                                            {
+                                                <label>cashier @(User.Identity.IsAuthenticated ? HttpContext.Current.User.Identity.Name : "Guest")</label>
+                                            }
+                                        </li>
+                                        <li>Adama,Ethiopia, 2015</li>
+                                        <li> Kebele 09</li>
+                                        <li>@reciept_no</li>
+                                    </ul>
+                                </div>
+                                <div class="invoice-items">
+                                    <div class="table-responsive" style="overflow: hidden; outline: none;" tabindex="0">
+                                        <table class="table table">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        @Html.DisplayNameFor(model => model.description)
+                                                    </th>
+                                                    <th>
+                                                        @Html.DisplayNameFor(model => model.quantity)
+                                                    </th>
+                                                    <th>
+                                                        @Html.DisplayNameFor(model => model.price)
+                                                    </th>
+                                                    <th>
+                                                        @Html.DisplayNameFor(model => model.total)
+                                                    </th>
+                                                    <th>
+                                                        @Html.DisplayNameFor(model => model.vat)
+                                                    </th>
+                                                    <th>
+                                                        Subtotal
+                                                    </th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                @foreach (var item in Model)
+                                                {
+                                                    if (item.Plate_no != null)
+                                                    {
+                                                        <tr>
+
+
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.description)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.quantity)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.price)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.total)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.vat)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.tot_withvat)
+                                                            </td>
+
+                                                        </tr>
+                                                        total += item.total;
+                                                        sub_total += item.tot_withvat;
+                                                        sub_vat += item.vat;
+                                                        Fullname = item.customer_Fullname;
+                                                        reciept_no += item.Id;
+                                                        plate_no = item.Plate_no;
+
+                                                    }
+                                                    else
+                                                    {
+                                                        TempData["SuccessMessage"] = "the car is out!";
+                                                    }
+                                                }
+
+
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th colspan="2" class="text-right">Sub Total:</th>
+                                                    <th class="text-center">@total</th>
+                                                </tr>
+                                                <tr>
+                                                    <th colspan="2" class="text-right">20% VAT:</th>
+                                                    <th class="text-center">@sub_vat</th>
+                                                </tr>
+
+                                                <tr>
+                                                    <th colspan="2" class="text-right">Total:</th>
+                                                    <th class="text-center">@sub_total</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="invoice-footer mt25">
+
+                                </div>
+                            </div>
+
+                            <!-- col-lg-12 end here -->
+                        </div>
+                        <!-- End .row -->
+                    </div>
+                </div>
+                <div class="invoice-to mt25">
+                    <ul class="list-unstyled">
+                        <li><strong>@reciept_no</strong></li>
+                        <li><strong>To: @Fullname</strong></li>
+                        <li>@datee</li>
+                  
+                    </ul>
+                </div>
+                <!-- End .panel -->
+            </div>
+            <!-- col-lg-12 end here -->
+        </div>
+    </div>
+    @using (Html.BeginForm("UpdateStatus", "reciepts", FormMethod.Post))
+    {
+        foreach (var item in Model)
+        {
+            <div>
+                <input type="hidden" name="ids[]" value="@item.Id" />
+
+            </div>
+        }
+        <button type="submit" class="fa fa-print mr5" onclick="window.print();">print</button>
+    }
+</body>
+
+</html>

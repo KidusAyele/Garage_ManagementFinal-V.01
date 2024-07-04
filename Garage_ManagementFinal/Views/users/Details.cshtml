@@ -1,0 +1,81 @@
+﻿@model Garage_ManagementFinal.user
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="~/Content/delete.css">
+</head>
+<div class="confirm-dialog-container">
+    <div class="confirm-dialog">
+        <h2>Details</h2>
+
+        <div>
+            <hr />
+            <dl class="dl-horizontal">
+                <div style="width:100%; display:table">
+                    <div style="display:table-row">
+                        <div style="width:50%;display:table-cell">
+
+                            <dt>
+                                Name
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Firstname)
+                                @Html.DisplayFor(model => model.Lastname)
+                            </dd>
+
+
+                      
+                            <dt>
+                                @Html.DisplayNameFor(model => model.phone_no)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.phone_no)
+                            </dd>
+                            <dt>
+                                Gender
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.gender)
+                            </dd>
+                        </div>
+                        <div style="width:50%;display:table-cell">
+                            <dt>
+                                Email
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.email)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.role)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.role)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.status)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.status)
+                            </dd>
+
+                        </div>
+                      </div>
+                </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>
+</div>

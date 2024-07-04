@@ -1,0 +1,80 @@
+﻿@model Garage_ManagementFinal.recipt
+
+@{
+    ViewBag.Title = "SearchForm";
+    Layout = "~/Views/Shared/_LayoutPage3.cshtml";
+    string codes = "";
+}
+@{
+
+    if (TempData["SuccessMessage"] != null)
+    {
+        <p class="alert alert-danger">
+            @TempData["SuccessMessage"]
+        </p>
+    }
+}
+<head>
+    <link rel="stylesheet" href="~/Content/delete.css">
+</head>
+<div class="confirm-dialog-container">
+    <div class="confirm-dialog">
+        <h2>Prepaire Attachment</h2>
+
+        @using (Html.BeginForm("SearchForname", "reciepts"))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4></h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+
+                    <h6>Code</h6>
+                    <div class="col-md-10">
+                        @Html.DropDownList("code", Enum.GetValues(typeof(code)).Cast<code>().Select(e => new SelectListItem { Text = e.ToString() }), "Select a code", new { @id = "code", @class = "form-control" })
+
+                    </div>
+
+
+                  <h6>Region</h6>
+                    <div class="col-md-10">
+                        @Html.DropDownList("region", Enum.GetValues(typeof(region)).Cast<region>().Select(e => new SelectListItem { Text = e.ToString() }), "Select a regions", new { @id = "region", @class = "form-control" })
+
+                    </div>
+                    <h6>Alphabet</h6>
+                    <div class="form-group">
+
+                        <div class="col-md-10">
+                            @Html.DropDownList("Alpa", Enum.GetValues(typeof(Alpa)).Cast<Alpa>().Select(e => new SelectListItem { Text = e.ToString() }), "Select a Alpha", new { @id = "Alpa", @class = "form-control" })
+
+                        </div>
+                    </div>
+
+                </div>
+                <h6>Palte No</h6>
+                <div class="col-md-10">
+
+                    <input type="text" name="plate_no" id="plate_no" class="form-control" />
+                    @Html.ValidationMessageFor(model => model.Plate_no, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+
+            <br />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-outline-info">
+                        <i class="fas fa-search"></i> <!-- Font Awesome icon -->
+                    </button>
+                    @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-outline-danger", style = "float: right;" })
+
+                </div>
+            </div>
+
+        }
+        </div>
+</div>

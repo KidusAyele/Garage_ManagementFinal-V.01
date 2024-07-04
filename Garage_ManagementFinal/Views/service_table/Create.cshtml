@@ -1,0 +1,55 @@
+﻿@model Garage_ManagementFinal.service_table
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+
+<h2>Add New Service</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <label>Service Name</label>
+        <div class="col-md-5">
+            @Html.EditorFor(model => model.service_name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.service_name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Price</label>
+        <div class="col-md-5">
+            @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label>selcet if the service requierd quantity</label>
+        <div class="col-md-5">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.type,new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.type, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-5">
+            <input type="submit" value="Create" class="btn btn-outline-success" />
+            @Html.ActionLink("Back", "View_toAdmin", null, new { @class = "btn btn-outline-danger", style = "float: right;" })
+
+        </div>
+    </div>
+</div>
+}
+
+

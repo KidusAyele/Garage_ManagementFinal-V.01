@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Garage_ManagementFinal.Stock>
+
+@{
+    ViewBag.Title = "ViewAdmin";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+@{
+
+    if (TempData["SuccessMessage"] != null)
+    {
+        <p class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </p>
+    }
+}
+
+<h2>All Stock Item</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="card-body ">
+    <table id="datatablesSimple">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.quantity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.type)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.quantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.type)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning" })
+
+
+                    </td>
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+
+    <script>
+    $(document).ready(function () {
+        $('#datatablesSimple').DataTable({
+            "ordering": false
+        });
+
+    });
+    </script>
+
+    </div>

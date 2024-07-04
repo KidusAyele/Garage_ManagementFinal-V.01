@@ -1,0 +1,78 @@
+﻿@model Garage_ManagementFinal.Entry_Form
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="~/Content/delete.css">
+</head>
+<div class="confirm-dialog-container">
+    <div class="confirm-dialog">
+        <h2>Details</h2>
+        <div style="width:100%; display:table">
+            <div style="display:table-row">
+                <hr />
+                <dl class="d-lg-grid">
+                    <div style="width:50%;display:table-cell">
+                        <dt>
+                            Plate No
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.region)
+                            @Html.DisplayFor(model => model.code)
+                            @Html.DisplayFor(model => model.Alpha)
+                            @Html.DisplayFor(model => model.plate_no)
+                        </dd>
+
+                    </div>
+                    <div style="width:50%;display:table-cell">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Brand)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Brand)
+                        </dd>
+
+                        <dt>
+                           Owner Name
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Owner_name)
+                        </dd>
+
+                        <dt>
+                           Phone No
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.phone)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Description)
+                        </dd>
+                        <dt>
+                          Entry Date
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.date)
+                        </dd>
+
+                    </div>
+                </dl>
+            </div>
+        </div>
+    <hr/>
+        <p>
+         
+            @Html.ActionLink("back", "unrepairedCar", null, new { @class = "btn btn-outline-info" })
+        </p>
+</div></div>

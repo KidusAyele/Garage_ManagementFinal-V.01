@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Garage_ManagementFinal.purchase>
+
+@{
+    ViewBag.Title = "SearchFordate";
+    Layout = "~/Views/Shared/_LayoutPage2.cshtml";
+    double sub_total = 0;
+    DateTime datee = DateTime.Now;
+
+}
+
+<h2>Purchased Item</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.old_quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.new_quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.remain_quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.total_price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stock.name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.old_quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.new_quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.remain_quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.total_price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stock.name)
+            </td>
+            <td>
+
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+
+            </td>
+        </tr>
+        sub_total += item.total_price;
+    }
+    <tfoot>
+      
+
+        <tr>
+            <th colspan="2" class="text-right">Total:</th>
+            <th class="text-center">@sub_total</th>
+        </tr>
+    </tfoot>
+</table>
+

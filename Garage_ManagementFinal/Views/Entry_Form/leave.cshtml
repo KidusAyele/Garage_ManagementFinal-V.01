@@ -1,0 +1,57 @@
+﻿
+@model Garage_ManagementFinal.Entry_Form
+
+@{
+    ViewBag.Title = "leave";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="~/Content/delete.css">
+</head>
+
+
+<div class="confirm-dialog-container">
+    <div class="confirm-dialog">
+        <h3>Are you sure?</h3>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div>
+       
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Id)
+
+                <dl class="dl-horizontal">
+                    <dt>
+                        Plate No
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.region)
+                        @Html.DisplayFor(model => model.Alpha)
+                        @Html.DisplayFor(model => model.code)
+                        @Html.DisplayFor(model => model.plate_no)
+                    </dd>
+
+                    <dt>
+                        Owner Name
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Owner_name)
+                    </dd>          
+                </dl>
+            </div>
+            <hr />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Accept" class="btn btn-outline-success" />
+                    @Html.ActionLink("Back", "unrepairedCar", null, new { @class = "btn btn-outline-danger", style = "float: right;" })
+
+                </div>
+            </div>
+          
+        }
+        </div>
+</div>

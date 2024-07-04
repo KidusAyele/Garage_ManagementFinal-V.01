@@ -1,0 +1,119 @@
+﻿@model IEnumerable<Garage_ManagementFinal.recipt>
+
+@{
+    ViewBag.Title = "SearchFordate";
+    Layout = "~/Views/Shared/_LayoutPage3.cshtml";
+    double sub_total = 0;
+    double sub_vat = 0;
+    double total = 0;
+    string Fullname = "";
+    string Brand = "";
+    DateTime datee = DateTime.Now;
+    string plate_no = "";
+}
+
+<h2>SearchFordate</h2>
+
+<p>
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.customer_Fullname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Plate_no)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tot_withvat)
+        </th>
+       
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.customer_Fullname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Plate_no)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.vat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tot_withvat)
+            </td>
+           
+            <td>
+            </td>
+        </tr>
+        total += item.total;
+        sub_total += item.tot_withvat;
+        sub_vat += item.vat;
+        Fullname = item.customer_Fullname;
+        Brand += item.Id;
+        plate_no = item.Plate_no;
+    }
+
+</table>
+
+<div class="col-12 px-4">
+    <div class="d-flex align-items-end mt-4 mb-2">
+        <p class="h4 m-0">
+            <span class="pe-1">Price</span>
+        </p>
+
+    </div>
+    <div class="d-flex justify-content-between mb-2">
+        <p class="textmuted">Total Before Vat</p>
+        <p class="fs-14 fw-bold">@total</p>
+    </div>
+    <div class="d-flex justify-content-between mb-2">
+        <p class="textmuted">Vat</p>
+        <p class="fs-14 fw-bold"><span class="fas fa-dollar-sign pe-1"></span>@sub_vat</p>
+    </div>
+
+    <div class="d-flex justify-content-between mb-3">
+        <p class="textmuted fw-bold">Sub Total</p>
+        <div class="d-flex align-text-top ">
+            <span class="fas fa-dollar-sign mt-1 pe-1 fs-14 "></span><span class="h4">@sub_total</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Garage_ManagementFinal.purchase>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage2.cshtml";
+}
+
+<h2>See All purchased Item</h2>
+
+<div class="card-body ">
+    <table id="datatablesSimple">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.old_quantity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.new_quantity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.remain_quantity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.total_price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Stock.name)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.old_quantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.new_quantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.remain_quantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.total_price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Stock.name)
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready(function () {
+            $('#datatablesSimple').DataTable({
+                "ordering": false
+            });
+
+        });
+    </script>

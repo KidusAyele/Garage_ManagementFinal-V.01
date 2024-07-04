@@ -1,0 +1,45 @@
+﻿@model Garage_ManagementFinal.recipt
+
+@{
+    ViewBag.Title = "SearchForm";
+    Layout = "~/Views/Shared/_LayoutPage2.cshtml";
+}
+<div class="col-md-5">
+    <h2>Search by Date</h2>
+
+    @using (Html.BeginForm("SearchFordate", "purchases"))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <label for="searchPhrase">Start Date</label>
+                <div class="col-md-10">
+                    <input type="date" name="searchPhrase" id="serchPhrase" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="searchPhrase2">End date</label>
+                <div class="col-md-10">
+                    <input type="date" name="searchPhrase2" id="serchPhrase2" class="form-control" />
+                </div>
+            </div>
+
+            <br />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-outline-info">
+                        <i class="fas fa-search"></i> <!-- Font Awesome icon -->
+                    </button>
+                    @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-outline-danger", style = "float: right;" })
+
+                </div>
+            </div>
+        </div>
+    }
+    </div>

@@ -1,0 +1,74 @@
+﻿@model Garage_ManagementFinal.order_stkitem
+
+@{
+    ViewBag.Title = "Detail1";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+<div>
+    <h4>orderd Stock Item Detail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Alpha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Alpha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Orderedby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Orderedby)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Entry_Form.region)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Entry_Form.region)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Stock.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stock.name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+
+    @Html.ActionLink("Back to List", "Index")
+</p>

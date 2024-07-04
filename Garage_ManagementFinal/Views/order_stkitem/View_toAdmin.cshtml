@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Garage_ManagementFinal.order_stkitem>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+
+<h2>Index</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.quantity)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stock.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Entry_Form.plate_no)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantity)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stock.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Entry_Form.plate_no)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+
+        </tr>
+    }
+
+</table>

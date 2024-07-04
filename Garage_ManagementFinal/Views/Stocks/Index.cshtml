@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Garage_ManagementFinal.Stock>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage2.cshtml";
+}
+
+<h2>View Available Stock</h2>
+   @{ if (TempData["SuccessMessage"] != null)
+    {
+<p class="alert alert-success">
+    @TempData["SuccessMessage"]
+</p>
+    }
+}
+<div class="card-body ">
+    <table id="datatablesSimple">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.quantity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.type)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.buy_price)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.quantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.type)
+                    </td>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.buy_price)
+                    </th>
+                    <td>
+
+                        @Html.ActionLink("Add", "Viewadd", new { id = item.Id }, new { @class = "btn btn-success" })
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#datatablesSimple').DataTable({
+            "ordering": false
+        });
+
+    });
+</script>

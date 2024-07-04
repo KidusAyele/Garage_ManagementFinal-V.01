@@ -1,0 +1,23 @@
+﻿@model Garage_ManagementFinal.user
+@{
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="~/Content/delete.css">
+</head>
+<div class="confirm-dialog-container">
+    <div class="confirm-dialog">
+        <h3>Are you sure you want to delete this User?</h3>
+        <hr />
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-danger" /> |
+                @Html.ActionLink("Cancle", "Index",null, new { @class = "btn btn-primary" })
+            </div>
+        }
+    </div>
+    </div>
+    

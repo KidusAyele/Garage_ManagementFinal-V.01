@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Garage_ManagementFinal.recipt>
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>View</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.customer_Fullname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Plate_no)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tot_withvat)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.customer_Fullname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Plate_no)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.total)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tot_withvat)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id, @class = "btn btn-warning" }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id , @class = "btn btn-info" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id, @class = "btn btn-danger"})
+        </td>
+    </tr>
+}
+
+</table>

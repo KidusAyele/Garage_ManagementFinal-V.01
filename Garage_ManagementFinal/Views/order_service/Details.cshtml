@@ -1,0 +1,58 @@
+﻿@model Garage_ManagementFinal.order_service
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>order_service</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Assistant_Mechanic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Assistant_Mechanic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Entry_Form.plate_no)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Entry_Form.plate_no)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.service_table.service_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.service_table.service_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

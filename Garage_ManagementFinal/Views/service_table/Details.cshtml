@@ -1,0 +1,50 @@
+﻿@model Garage_ManagementFinal.service_table
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="~/Content/delete.css">
+</head>
+<div class="confirm-dialog-container">
+    <div class="confirm-dialog">
+        <h2>Service Details</h2>
+
+        <div>
+           
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.service_name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.service_name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.price)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.price)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.status)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.status)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-outline-warning" }) |
+            @Html.ActionLink("Back", "View_toAdmin", null, new { @class = "btn btn-outline-danger", style = "float: right;" })
+
+        </p>
+     </div>
+</div>

@@ -1,0 +1,74 @@
+﻿@model Garage_ManagementFinal.order_stkitem
+
+
+@{
+    ViewBag.Title = "Acceptorder";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+<h2>Accept</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            <div class="form-group">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Entry_Form.plate_no)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Entry_Form.plate_no)
+                </dd>
+            </div>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Stock.name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Stock.name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.quantity)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.quantity)
+            </dd>
+
+        </div>
+
+
+
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="row button">
+
+                    <input type="submit" value="Accept" class="btn btn-success" />
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
+}
