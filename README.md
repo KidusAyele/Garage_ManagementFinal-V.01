@@ -29,11 +29,12 @@ This is a Garage Management System developed using ASP.NET Core MVC with .NET 6 
 ### Admin
 - Manage users and roles
 - View and manage all system data
-- Generate reports
+- Add new service and Items
 
 ### Mechanic
 - View and update assigned jobs
 - Record job progress and completion
+- Order items from stock
 
 ### Stock Manager
 - Manage inventory and stock levels
