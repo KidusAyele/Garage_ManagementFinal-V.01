@@ -3,6 +3,20 @@
 ## Overview
 
 This is a Garage Management System developed using ASP.NET Core MVC with .NET 6 and Entity Framework. The system has four user roles: Admin, Mechanic, Stock Manager, and Cashier, each with specific functionalities tailored to their roles.
+## Screenshots
+![Login](https://github.com/KidusAyele/Garage_ManagementFinal-V.01/blob/master/Screenshot%20(7).png)
+
+### Admin Dashboard
+![Admin Dashboard](https://github.com/KidusAyele/Garage_ManagementFinal-V.01/blob/master/Screenshot%20(2).png)
+
+### Mechanic Job View
+![Mechanic Job View](https://github.com/KidusAyele/Garage_ManagementFinal-V.01/blob/master/Screenshot%20(6).png)
+
+### Stock Manager Inventory
+![Stock Manager Inventory](https://github.com/KidusAyele/Garage_ManagementFinal-V.01/blob/master/Screenshot%20(8).png)
+
+### Cashier Payment Interface
+![Cashier Payment Interface](https://github.com/KidusAyele/Garage_ManagementFinal-V.01/blob/master/Screenshot%20(9).png)
 
 ## Table of Contents
 
